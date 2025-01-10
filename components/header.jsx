@@ -2,14 +2,25 @@ import React from "react";
 import { Button } from "./ui/button";
 import { Heart, CarFront, Layout, ArrowLeft } from "lucide-react";
 import Link from "next/link";
-import { SignedIn, SignedOut, SignInButton, UserButton, useUser } from "@clerk/nextjs";
+import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
 import Image from "next/image";
 import { checkUser } from "@/lib/checkUser";
 
 const Header = async ({ isAdminPage = false }) => {
-  const user = await checkUser();
-  const isAdmin = user?.role === "ADMIN";
+  // Add error handling for database connection
+  let user = null;
+  let isAdmin = false;
   
+  try {
+    user = await checkUser();
+    isAdmin = user?.role === "ADMIN";
+  } catch (error) {
+    console.log("Database connection error in Header:", error.message);
+    // Continue rendering without database-dependent features
+    user = null;
+    isAdmin = false;
+  }
+ 
   return (
     <header className="fixed top-0 w-full bg-white/80 backdrop-blur-md z-50 border-b">
       <nav className="mx-auto px-4 py-4 flex items-center justify-between">

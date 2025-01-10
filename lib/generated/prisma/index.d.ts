@@ -1386,13 +1386,13 @@ export namespace Prisma {
    */
 
   export type UserCountOutputType = {
-    savedCars: number
     testDrives: number
+    savedCars: number
   }
 
   export type UserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    savedCars?: boolean | UserCountOutputTypeCountSavedCarsArgs
     testDrives?: boolean | UserCountOutputTypeCountTestDrivesArgs
+    savedCars?: boolean | UserCountOutputTypeCountSavedCarsArgs
   }
 
   // Custom InputTypes
@@ -1409,15 +1409,15 @@ export namespace Prisma {
   /**
    * UserCountOutputType without action
    */
-  export type UserCountOutputTypeCountSavedCarsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: UserSavedCarWhereInput
+  export type UserCountOutputTypeCountTestDrivesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: TestDriveBookingWhereInput
   }
 
   /**
    * UserCountOutputType without action
    */
-  export type UserCountOutputTypeCountTestDrivesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: TestDriveBookingWhereInput
+  export type UserCountOutputTypeCountSavedCarsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: UserSavedCarWhereInput
   }
 
 
@@ -1426,13 +1426,13 @@ export namespace Prisma {
    */
 
   export type CarCountOutputType = {
-    savedBy: number
     testDriveBookings: number
+    savedBy: number
   }
 
   export type CarCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    savedBy?: boolean | CarCountOutputTypeCountSavedByArgs
     testDriveBookings?: boolean | CarCountOutputTypeCountTestDriveBookingsArgs
+    savedBy?: boolean | CarCountOutputTypeCountSavedByArgs
   }
 
   // Custom InputTypes
@@ -1449,15 +1449,15 @@ export namespace Prisma {
   /**
    * CarCountOutputType without action
    */
-  export type CarCountOutputTypeCountSavedByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: UserSavedCarWhereInput
+  export type CarCountOutputTypeCountTestDriveBookingsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: TestDriveBookingWhereInput
   }
 
   /**
    * CarCountOutputType without action
    */
-  export type CarCountOutputTypeCountTestDriveBookingsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: TestDriveBookingWhereInput
+  export type CarCountOutputTypeCountSavedByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: UserSavedCarWhereInput
   }
 
 
@@ -1692,8 +1692,8 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
     role?: boolean
-    savedCars?: boolean | User$savedCarsArgs<ExtArgs>
     testDrives?: boolean | User$testDrivesArgs<ExtArgs>
+    savedCars?: boolean | User$savedCarsArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
@@ -1735,8 +1735,8 @@ export namespace Prisma {
 
   export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "clerkUserId" | "email" | "name" | "imageUrl" | "phone" | "createdAt" | "updatedAt" | "role", ExtArgs["result"]["user"]>
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    savedCars?: boolean | User$savedCarsArgs<ExtArgs>
     testDrives?: boolean | User$testDrivesArgs<ExtArgs>
+    savedCars?: boolean | User$savedCarsArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type UserIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -1745,8 +1745,8 @@ export namespace Prisma {
   export type $UserPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "User"
     objects: {
-      savedCars: Prisma.$UserSavedCarPayload<ExtArgs>[]
       testDrives: Prisma.$TestDriveBookingPayload<ExtArgs>[]
+      savedCars: Prisma.$UserSavedCarPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -2152,8 +2152,8 @@ export namespace Prisma {
    */
   export interface Prisma__UserClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    savedCars<T extends User$savedCarsArgs<ExtArgs> = {}>(args?: Subset<T, User$savedCarsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserSavedCarPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     testDrives<T extends User$testDrivesArgs<ExtArgs> = {}>(args?: Subset<T, User$testDrivesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TestDriveBookingPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    savedCars<T extends User$savedCarsArgs<ExtArgs> = {}>(args?: Subset<T, User$savedCarsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserSavedCarPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2580,30 +2580,6 @@ export namespace Prisma {
   }
 
   /**
-   * User.savedCars
-   */
-  export type User$savedCarsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the UserSavedCar
-     */
-    select?: UserSavedCarSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the UserSavedCar
-     */
-    omit?: UserSavedCarOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: UserSavedCarInclude<ExtArgs> | null
-    where?: UserSavedCarWhereInput
-    orderBy?: UserSavedCarOrderByWithRelationInput | UserSavedCarOrderByWithRelationInput[]
-    cursor?: UserSavedCarWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: UserSavedCarScalarFieldEnum | UserSavedCarScalarFieldEnum[]
-  }
-
-  /**
    * User.testDrives
    */
   export type User$testDrivesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -2625,6 +2601,30 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: TestDriveBookingScalarFieldEnum | TestDriveBookingScalarFieldEnum[]
+  }
+
+  /**
+   * User.savedCars
+   */
+  export type User$savedCarsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserSavedCar
+     */
+    select?: UserSavedCarSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserSavedCar
+     */
+    omit?: UserSavedCarOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserSavedCarInclude<ExtArgs> | null
+    where?: UserSavedCarWhereInput
+    orderBy?: UserSavedCarOrderByWithRelationInput | UserSavedCarOrderByWithRelationInput[]
+    cursor?: UserSavedCarWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: UserSavedCarScalarFieldEnum | UserSavedCarScalarFieldEnum[]
   }
 
   /**
@@ -2948,8 +2948,8 @@ export namespace Prisma {
     images?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    savedBy?: boolean | Car$savedByArgs<ExtArgs>
     testDriveBookings?: boolean | Car$testDriveBookingsArgs<ExtArgs>
+    savedBy?: boolean | Car$savedByArgs<ExtArgs>
     _count?: boolean | CarCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["car"]>
 
@@ -3015,8 +3015,8 @@ export namespace Prisma {
 
   export type CarOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "make" | "model" | "year" | "price" | "mileage" | "color" | "fuelType" | "transmission" | "bodyType" | "seats" | "description" | "status" | "featured" | "images" | "createdAt" | "updatedAt", ExtArgs["result"]["car"]>
   export type CarInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    savedBy?: boolean | Car$savedByArgs<ExtArgs>
     testDriveBookings?: boolean | Car$testDriveBookingsArgs<ExtArgs>
+    savedBy?: boolean | Car$savedByArgs<ExtArgs>
     _count?: boolean | CarCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type CarIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -3025,8 +3025,8 @@ export namespace Prisma {
   export type $CarPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Car"
     objects: {
-      savedBy: Prisma.$UserSavedCarPayload<ExtArgs>[]
       testDriveBookings: Prisma.$TestDriveBookingPayload<ExtArgs>[]
+      savedBy: Prisma.$UserSavedCarPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -3440,8 +3440,8 @@ export namespace Prisma {
    */
   export interface Prisma__CarClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    savedBy<T extends Car$savedByArgs<ExtArgs> = {}>(args?: Subset<T, Car$savedByArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserSavedCarPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     testDriveBookings<T extends Car$testDriveBookingsArgs<ExtArgs> = {}>(args?: Subset<T, Car$testDriveBookingsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TestDriveBookingPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    savedBy<T extends Car$savedByArgs<ExtArgs> = {}>(args?: Subset<T, Car$savedByArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserSavedCarPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -3876,30 +3876,6 @@ export namespace Prisma {
   }
 
   /**
-   * Car.savedBy
-   */
-  export type Car$savedByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the UserSavedCar
-     */
-    select?: UserSavedCarSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the UserSavedCar
-     */
-    omit?: UserSavedCarOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: UserSavedCarInclude<ExtArgs> | null
-    where?: UserSavedCarWhereInput
-    orderBy?: UserSavedCarOrderByWithRelationInput | UserSavedCarOrderByWithRelationInput[]
-    cursor?: UserSavedCarWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: UserSavedCarScalarFieldEnum | UserSavedCarScalarFieldEnum[]
-  }
-
-  /**
    * Car.testDriveBookings
    */
   export type Car$testDriveBookingsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -3921,6 +3897,30 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: TestDriveBookingScalarFieldEnum | TestDriveBookingScalarFieldEnum[]
+  }
+
+  /**
+   * Car.savedBy
+   */
+  export type Car$savedByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserSavedCar
+     */
+    select?: UserSavedCarSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserSavedCar
+     */
+    omit?: UserSavedCarOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserSavedCarInclude<ExtArgs> | null
+    where?: UserSavedCarWhereInput
+    orderBy?: UserSavedCarOrderByWithRelationInput | UserSavedCarOrderByWithRelationInput[]
+    cursor?: UserSavedCarWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: UserSavedCarScalarFieldEnum | UserSavedCarScalarFieldEnum[]
   }
 
   /**
@@ -6291,8 +6291,8 @@ export namespace Prisma {
     userId?: boolean
     carId?: boolean
     savedAt?: boolean
-    user?: boolean | UserDefaultArgs<ExtArgs>
     car?: boolean | CarDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["userSavedCar"]>
 
   export type UserSavedCarSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -6300,8 +6300,8 @@ export namespace Prisma {
     userId?: boolean
     carId?: boolean
     savedAt?: boolean
-    user?: boolean | UserDefaultArgs<ExtArgs>
     car?: boolean | CarDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["userSavedCar"]>
 
   export type UserSavedCarSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -6309,8 +6309,8 @@ export namespace Prisma {
     userId?: boolean
     carId?: boolean
     savedAt?: boolean
-    user?: boolean | UserDefaultArgs<ExtArgs>
     car?: boolean | CarDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["userSavedCar"]>
 
   export type UserSavedCarSelectScalar = {
@@ -6322,23 +6322,23 @@ export namespace Prisma {
 
   export type UserSavedCarOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "carId" | "savedAt", ExtArgs["result"]["userSavedCar"]>
   export type UserSavedCarInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    user?: boolean | UserDefaultArgs<ExtArgs>
     car?: boolean | CarDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
   }
   export type UserSavedCarIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    user?: boolean | UserDefaultArgs<ExtArgs>
     car?: boolean | CarDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
   }
   export type UserSavedCarIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    user?: boolean | UserDefaultArgs<ExtArgs>
     car?: boolean | CarDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
   }
 
   export type $UserSavedCarPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "UserSavedCar"
     objects: {
-      user: Prisma.$UserPayload<ExtArgs>
       car: Prisma.$CarPayload<ExtArgs>
+      user: Prisma.$UserPayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -6739,8 +6739,8 @@ export namespace Prisma {
    */
   export interface Prisma__UserSavedCarClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     car<T extends CarDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CarDefaultArgs<ExtArgs>>): Prisma__CarClient<$Result.GetResult<Prisma.$CarPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -8602,8 +8602,8 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
     role?: EnumUserRoleFilter<"User"> | $Enums.UserRole
-    savedCars?: UserSavedCarListRelationFilter
     testDrives?: TestDriveBookingListRelationFilter
+    savedCars?: UserSavedCarListRelationFilter
   }
 
   export type UserOrderByWithRelationInput = {
@@ -8616,8 +8616,8 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrder
     role?: SortOrder
-    savedCars?: UserSavedCarOrderByRelationAggregateInput
     testDrives?: TestDriveBookingOrderByRelationAggregateInput
+    savedCars?: UserSavedCarOrderByRelationAggregateInput
   }
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -8633,8 +8633,8 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
     role?: EnumUserRoleFilter<"User"> | $Enums.UserRole
-    savedCars?: UserSavedCarListRelationFilter
     testDrives?: TestDriveBookingListRelationFilter
+    savedCars?: UserSavedCarListRelationFilter
   }, "id" | "clerkUserId" | "email">
 
   export type UserOrderByWithAggregationInput = {
@@ -8688,8 +8688,8 @@ export namespace Prisma {
     images?: StringNullableListFilter<"Car">
     createdAt?: DateTimeFilter<"Car"> | Date | string
     updatedAt?: DateTimeFilter<"Car"> | Date | string
-    savedBy?: UserSavedCarListRelationFilter
     testDriveBookings?: TestDriveBookingListRelationFilter
+    savedBy?: UserSavedCarListRelationFilter
   }
 
   export type CarOrderByWithRelationInput = {
@@ -8710,8 +8710,8 @@ export namespace Prisma {
     images?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    savedBy?: UserSavedCarOrderByRelationAggregateInput
     testDriveBookings?: TestDriveBookingOrderByRelationAggregateInput
+    savedBy?: UserSavedCarOrderByRelationAggregateInput
   }
 
   export type CarWhereUniqueInput = Prisma.AtLeast<{
@@ -8735,8 +8735,8 @@ export namespace Prisma {
     images?: StringNullableListFilter<"Car">
     createdAt?: DateTimeFilter<"Car"> | Date | string
     updatedAt?: DateTimeFilter<"Car"> | Date | string
-    savedBy?: UserSavedCarListRelationFilter
     testDriveBookings?: TestDriveBookingListRelationFilter
+    savedBy?: UserSavedCarListRelationFilter
   }, "id">
 
   export type CarOrderByWithAggregationInput = {
@@ -8931,8 +8931,8 @@ export namespace Prisma {
     userId?: StringFilter<"UserSavedCar"> | string
     carId?: StringFilter<"UserSavedCar"> | string
     savedAt?: DateTimeFilter<"UserSavedCar"> | Date | string
-    user?: XOR<UserScalarRelationFilter, UserWhereInput>
     car?: XOR<CarScalarRelationFilter, CarWhereInput>
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
   }
 
   export type UserSavedCarOrderByWithRelationInput = {
@@ -8940,8 +8940,8 @@ export namespace Prisma {
     userId?: SortOrder
     carId?: SortOrder
     savedAt?: SortOrder
-    user?: UserOrderByWithRelationInput
     car?: CarOrderByWithRelationInput
+    user?: UserOrderByWithRelationInput
   }
 
   export type UserSavedCarWhereUniqueInput = Prisma.AtLeast<{
@@ -8953,8 +8953,8 @@ export namespace Prisma {
     userId?: StringFilter<"UserSavedCar"> | string
     carId?: StringFilter<"UserSavedCar"> | string
     savedAt?: DateTimeFilter<"UserSavedCar"> | Date | string
-    user?: XOR<UserScalarRelationFilter, UserWhereInput>
     car?: XOR<CarScalarRelationFilter, CarWhereInput>
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
   }, "id" | "userId_carId">
 
   export type UserSavedCarOrderByWithAggregationInput = {
@@ -9070,8 +9070,8 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     role?: $Enums.UserRole
-    savedCars?: UserSavedCarCreateNestedManyWithoutUserInput
     testDrives?: TestDriveBookingCreateNestedManyWithoutUserInput
+    savedCars?: UserSavedCarCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateInput = {
@@ -9084,8 +9084,8 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     role?: $Enums.UserRole
-    savedCars?: UserSavedCarUncheckedCreateNestedManyWithoutUserInput
     testDrives?: TestDriveBookingUncheckedCreateNestedManyWithoutUserInput
+    savedCars?: UserSavedCarUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserUpdateInput = {
@@ -9098,8 +9098,8 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
-    savedCars?: UserSavedCarUpdateManyWithoutUserNestedInput
     testDrives?: TestDriveBookingUpdateManyWithoutUserNestedInput
+    savedCars?: UserSavedCarUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateInput = {
@@ -9112,8 +9112,8 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
-    savedCars?: UserSavedCarUncheckedUpdateManyWithoutUserNestedInput
     testDrives?: TestDriveBookingUncheckedUpdateManyWithoutUserNestedInput
+    savedCars?: UserSavedCarUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateManyInput = {
@@ -9170,8 +9170,8 @@ export namespace Prisma {
     images?: CarCreateimagesInput | string[]
     createdAt?: Date | string
     updatedAt?: Date | string
-    savedBy?: UserSavedCarCreateNestedManyWithoutCarInput
     testDriveBookings?: TestDriveBookingCreateNestedManyWithoutCarInput
+    savedBy?: UserSavedCarCreateNestedManyWithoutCarInput
   }
 
   export type CarUncheckedCreateInput = {
@@ -9192,8 +9192,8 @@ export namespace Prisma {
     images?: CarCreateimagesInput | string[]
     createdAt?: Date | string
     updatedAt?: Date | string
-    savedBy?: UserSavedCarUncheckedCreateNestedManyWithoutCarInput
     testDriveBookings?: TestDriveBookingUncheckedCreateNestedManyWithoutCarInput
+    savedBy?: UserSavedCarUncheckedCreateNestedManyWithoutCarInput
   }
 
   export type CarUpdateInput = {
@@ -9214,8 +9214,8 @@ export namespace Prisma {
     images?: CarUpdateimagesInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    savedBy?: UserSavedCarUpdateManyWithoutCarNestedInput
     testDriveBookings?: TestDriveBookingUpdateManyWithoutCarNestedInput
+    savedBy?: UserSavedCarUpdateManyWithoutCarNestedInput
   }
 
   export type CarUncheckedUpdateInput = {
@@ -9236,8 +9236,8 @@ export namespace Prisma {
     images?: CarUpdateimagesInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    savedBy?: UserSavedCarUncheckedUpdateManyWithoutCarNestedInput
     testDriveBookings?: TestDriveBookingUncheckedUpdateManyWithoutCarNestedInput
+    savedBy?: UserSavedCarUncheckedUpdateManyWithoutCarNestedInput
   }
 
   export type CarCreateManyInput = {
@@ -9453,8 +9453,8 @@ export namespace Prisma {
   export type UserSavedCarCreateInput = {
     id?: string
     savedAt?: Date | string
-    user: UserCreateNestedOneWithoutSavedCarsInput
     car: CarCreateNestedOneWithoutSavedByInput
+    user: UserCreateNestedOneWithoutSavedCarsInput
   }
 
   export type UserSavedCarUncheckedCreateInput = {
@@ -9467,8 +9467,8 @@ export namespace Prisma {
   export type UserSavedCarUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     savedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    user?: UserUpdateOneRequiredWithoutSavedCarsNestedInput
     car?: CarUpdateOneRequiredWithoutSavedByNestedInput
+    user?: UserUpdateOneRequiredWithoutSavedCarsNestedInput
   }
 
   export type UserSavedCarUncheckedUpdateInput = {
@@ -9634,16 +9634,16 @@ export namespace Prisma {
     not?: NestedEnumUserRoleFilter<$PrismaModel> | $Enums.UserRole
   }
 
-  export type UserSavedCarListRelationFilter = {
-    every?: UserSavedCarWhereInput
-    some?: UserSavedCarWhereInput
-    none?: UserSavedCarWhereInput
-  }
-
   export type TestDriveBookingListRelationFilter = {
     every?: TestDriveBookingWhereInput
     some?: TestDriveBookingWhereInput
     none?: TestDriveBookingWhereInput
+  }
+
+  export type UserSavedCarListRelationFilter = {
+    every?: UserSavedCarWhereInput
+    some?: UserSavedCarWhereInput
+    none?: UserSavedCarWhereInput
   }
 
   export type SortOrderInput = {
@@ -9651,11 +9651,11 @@ export namespace Prisma {
     nulls?: NullsOrder
   }
 
-  export type UserSavedCarOrderByRelationAggregateInput = {
+  export type TestDriveBookingOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
-  export type TestDriveBookingOrderByRelationAggregateInput = {
+  export type UserSavedCarOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -10046,14 +10046,14 @@ export namespace Prisma {
     _max?: NestedEnumDayOfWeekFilter<$PrismaModel>
   }
 
-  export type UserScalarRelationFilter = {
-    is?: UserWhereInput
-    isNot?: UserWhereInput
-  }
-
   export type CarScalarRelationFilter = {
     is?: CarWhereInput
     isNot?: CarWhereInput
+  }
+
+  export type UserScalarRelationFilter = {
+    is?: UserWhereInput
+    isNot?: UserWhereInput
   }
 
   export type UserSavedCarUserIdCarIdCompoundUniqueInput = {
@@ -10138,13 +10138,6 @@ export namespace Prisma {
     _max?: NestedEnumBookingStatusFilter<$PrismaModel>
   }
 
-  export type UserSavedCarCreateNestedManyWithoutUserInput = {
-    create?: XOR<UserSavedCarCreateWithoutUserInput, UserSavedCarUncheckedCreateWithoutUserInput> | UserSavedCarCreateWithoutUserInput[] | UserSavedCarUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: UserSavedCarCreateOrConnectWithoutUserInput | UserSavedCarCreateOrConnectWithoutUserInput[]
-    createMany?: UserSavedCarCreateManyUserInputEnvelope
-    connect?: UserSavedCarWhereUniqueInput | UserSavedCarWhereUniqueInput[]
-  }
-
   export type TestDriveBookingCreateNestedManyWithoutUserInput = {
     create?: XOR<TestDriveBookingCreateWithoutUserInput, TestDriveBookingUncheckedCreateWithoutUserInput> | TestDriveBookingCreateWithoutUserInput[] | TestDriveBookingUncheckedCreateWithoutUserInput[]
     connectOrCreate?: TestDriveBookingCreateOrConnectWithoutUserInput | TestDriveBookingCreateOrConnectWithoutUserInput[]
@@ -10152,7 +10145,7 @@ export namespace Prisma {
     connect?: TestDriveBookingWhereUniqueInput | TestDriveBookingWhereUniqueInput[]
   }
 
-  export type UserSavedCarUncheckedCreateNestedManyWithoutUserInput = {
+  export type UserSavedCarCreateNestedManyWithoutUserInput = {
     create?: XOR<UserSavedCarCreateWithoutUserInput, UserSavedCarUncheckedCreateWithoutUserInput> | UserSavedCarCreateWithoutUserInput[] | UserSavedCarUncheckedCreateWithoutUserInput[]
     connectOrCreate?: UserSavedCarCreateOrConnectWithoutUserInput | UserSavedCarCreateOrConnectWithoutUserInput[]
     createMany?: UserSavedCarCreateManyUserInputEnvelope
@@ -10164,6 +10157,13 @@ export namespace Prisma {
     connectOrCreate?: TestDriveBookingCreateOrConnectWithoutUserInput | TestDriveBookingCreateOrConnectWithoutUserInput[]
     createMany?: TestDriveBookingCreateManyUserInputEnvelope
     connect?: TestDriveBookingWhereUniqueInput | TestDriveBookingWhereUniqueInput[]
+  }
+
+  export type UserSavedCarUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<UserSavedCarCreateWithoutUserInput, UserSavedCarUncheckedCreateWithoutUserInput> | UserSavedCarCreateWithoutUserInput[] | UserSavedCarUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: UserSavedCarCreateOrConnectWithoutUserInput | UserSavedCarCreateOrConnectWithoutUserInput[]
+    createMany?: UserSavedCarCreateManyUserInputEnvelope
+    connect?: UserSavedCarWhereUniqueInput | UserSavedCarWhereUniqueInput[]
   }
 
   export type StringFieldUpdateOperationsInput = {
@@ -10182,20 +10182,6 @@ export namespace Prisma {
     set?: $Enums.UserRole
   }
 
-  export type UserSavedCarUpdateManyWithoutUserNestedInput = {
-    create?: XOR<UserSavedCarCreateWithoutUserInput, UserSavedCarUncheckedCreateWithoutUserInput> | UserSavedCarCreateWithoutUserInput[] | UserSavedCarUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: UserSavedCarCreateOrConnectWithoutUserInput | UserSavedCarCreateOrConnectWithoutUserInput[]
-    upsert?: UserSavedCarUpsertWithWhereUniqueWithoutUserInput | UserSavedCarUpsertWithWhereUniqueWithoutUserInput[]
-    createMany?: UserSavedCarCreateManyUserInputEnvelope
-    set?: UserSavedCarWhereUniqueInput | UserSavedCarWhereUniqueInput[]
-    disconnect?: UserSavedCarWhereUniqueInput | UserSavedCarWhereUniqueInput[]
-    delete?: UserSavedCarWhereUniqueInput | UserSavedCarWhereUniqueInput[]
-    connect?: UserSavedCarWhereUniqueInput | UserSavedCarWhereUniqueInput[]
-    update?: UserSavedCarUpdateWithWhereUniqueWithoutUserInput | UserSavedCarUpdateWithWhereUniqueWithoutUserInput[]
-    updateMany?: UserSavedCarUpdateManyWithWhereWithoutUserInput | UserSavedCarUpdateManyWithWhereWithoutUserInput[]
-    deleteMany?: UserSavedCarScalarWhereInput | UserSavedCarScalarWhereInput[]
-  }
-
   export type TestDriveBookingUpdateManyWithoutUserNestedInput = {
     create?: XOR<TestDriveBookingCreateWithoutUserInput, TestDriveBookingUncheckedCreateWithoutUserInput> | TestDriveBookingCreateWithoutUserInput[] | TestDriveBookingUncheckedCreateWithoutUserInput[]
     connectOrCreate?: TestDriveBookingCreateOrConnectWithoutUserInput | TestDriveBookingCreateOrConnectWithoutUserInput[]
@@ -10210,7 +10196,7 @@ export namespace Prisma {
     deleteMany?: TestDriveBookingScalarWhereInput | TestDriveBookingScalarWhereInput[]
   }
 
-  export type UserSavedCarUncheckedUpdateManyWithoutUserNestedInput = {
+  export type UserSavedCarUpdateManyWithoutUserNestedInput = {
     create?: XOR<UserSavedCarCreateWithoutUserInput, UserSavedCarUncheckedCreateWithoutUserInput> | UserSavedCarCreateWithoutUserInput[] | UserSavedCarUncheckedCreateWithoutUserInput[]
     connectOrCreate?: UserSavedCarCreateOrConnectWithoutUserInput | UserSavedCarCreateOrConnectWithoutUserInput[]
     upsert?: UserSavedCarUpsertWithWhereUniqueWithoutUserInput | UserSavedCarUpsertWithWhereUniqueWithoutUserInput[]
@@ -10238,15 +10224,22 @@ export namespace Prisma {
     deleteMany?: TestDriveBookingScalarWhereInput | TestDriveBookingScalarWhereInput[]
   }
 
-  export type CarCreateimagesInput = {
-    set: string[]
+  export type UserSavedCarUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<UserSavedCarCreateWithoutUserInput, UserSavedCarUncheckedCreateWithoutUserInput> | UserSavedCarCreateWithoutUserInput[] | UserSavedCarUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: UserSavedCarCreateOrConnectWithoutUserInput | UserSavedCarCreateOrConnectWithoutUserInput[]
+    upsert?: UserSavedCarUpsertWithWhereUniqueWithoutUserInput | UserSavedCarUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: UserSavedCarCreateManyUserInputEnvelope
+    set?: UserSavedCarWhereUniqueInput | UserSavedCarWhereUniqueInput[]
+    disconnect?: UserSavedCarWhereUniqueInput | UserSavedCarWhereUniqueInput[]
+    delete?: UserSavedCarWhereUniqueInput | UserSavedCarWhereUniqueInput[]
+    connect?: UserSavedCarWhereUniqueInput | UserSavedCarWhereUniqueInput[]
+    update?: UserSavedCarUpdateWithWhereUniqueWithoutUserInput | UserSavedCarUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: UserSavedCarUpdateManyWithWhereWithoutUserInput | UserSavedCarUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: UserSavedCarScalarWhereInput | UserSavedCarScalarWhereInput[]
   }
 
-  export type UserSavedCarCreateNestedManyWithoutCarInput = {
-    create?: XOR<UserSavedCarCreateWithoutCarInput, UserSavedCarUncheckedCreateWithoutCarInput> | UserSavedCarCreateWithoutCarInput[] | UserSavedCarUncheckedCreateWithoutCarInput[]
-    connectOrCreate?: UserSavedCarCreateOrConnectWithoutCarInput | UserSavedCarCreateOrConnectWithoutCarInput[]
-    createMany?: UserSavedCarCreateManyCarInputEnvelope
-    connect?: UserSavedCarWhereUniqueInput | UserSavedCarWhereUniqueInput[]
+  export type CarCreateimagesInput = {
+    set: string[]
   }
 
   export type TestDriveBookingCreateNestedManyWithoutCarInput = {
@@ -10256,7 +10249,7 @@ export namespace Prisma {
     connect?: TestDriveBookingWhereUniqueInput | TestDriveBookingWhereUniqueInput[]
   }
 
-  export type UserSavedCarUncheckedCreateNestedManyWithoutCarInput = {
+  export type UserSavedCarCreateNestedManyWithoutCarInput = {
     create?: XOR<UserSavedCarCreateWithoutCarInput, UserSavedCarUncheckedCreateWithoutCarInput> | UserSavedCarCreateWithoutCarInput[] | UserSavedCarUncheckedCreateWithoutCarInput[]
     connectOrCreate?: UserSavedCarCreateOrConnectWithoutCarInput | UserSavedCarCreateOrConnectWithoutCarInput[]
     createMany?: UserSavedCarCreateManyCarInputEnvelope
@@ -10268,6 +10261,13 @@ export namespace Prisma {
     connectOrCreate?: TestDriveBookingCreateOrConnectWithoutCarInput | TestDriveBookingCreateOrConnectWithoutCarInput[]
     createMany?: TestDriveBookingCreateManyCarInputEnvelope
     connect?: TestDriveBookingWhereUniqueInput | TestDriveBookingWhereUniqueInput[]
+  }
+
+  export type UserSavedCarUncheckedCreateNestedManyWithoutCarInput = {
+    create?: XOR<UserSavedCarCreateWithoutCarInput, UserSavedCarUncheckedCreateWithoutCarInput> | UserSavedCarCreateWithoutCarInput[] | UserSavedCarUncheckedCreateWithoutCarInput[]
+    connectOrCreate?: UserSavedCarCreateOrConnectWithoutCarInput | UserSavedCarCreateOrConnectWithoutCarInput[]
+    createMany?: UserSavedCarCreateManyCarInputEnvelope
+    connect?: UserSavedCarWhereUniqueInput | UserSavedCarWhereUniqueInput[]
   }
 
   export type IntFieldUpdateOperationsInput = {
@@ -10307,20 +10307,6 @@ export namespace Prisma {
     push?: string | string[]
   }
 
-  export type UserSavedCarUpdateManyWithoutCarNestedInput = {
-    create?: XOR<UserSavedCarCreateWithoutCarInput, UserSavedCarUncheckedCreateWithoutCarInput> | UserSavedCarCreateWithoutCarInput[] | UserSavedCarUncheckedCreateWithoutCarInput[]
-    connectOrCreate?: UserSavedCarCreateOrConnectWithoutCarInput | UserSavedCarCreateOrConnectWithoutCarInput[]
-    upsert?: UserSavedCarUpsertWithWhereUniqueWithoutCarInput | UserSavedCarUpsertWithWhereUniqueWithoutCarInput[]
-    createMany?: UserSavedCarCreateManyCarInputEnvelope
-    set?: UserSavedCarWhereUniqueInput | UserSavedCarWhereUniqueInput[]
-    disconnect?: UserSavedCarWhereUniqueInput | UserSavedCarWhereUniqueInput[]
-    delete?: UserSavedCarWhereUniqueInput | UserSavedCarWhereUniqueInput[]
-    connect?: UserSavedCarWhereUniqueInput | UserSavedCarWhereUniqueInput[]
-    update?: UserSavedCarUpdateWithWhereUniqueWithoutCarInput | UserSavedCarUpdateWithWhereUniqueWithoutCarInput[]
-    updateMany?: UserSavedCarUpdateManyWithWhereWithoutCarInput | UserSavedCarUpdateManyWithWhereWithoutCarInput[]
-    deleteMany?: UserSavedCarScalarWhereInput | UserSavedCarScalarWhereInput[]
-  }
-
   export type TestDriveBookingUpdateManyWithoutCarNestedInput = {
     create?: XOR<TestDriveBookingCreateWithoutCarInput, TestDriveBookingUncheckedCreateWithoutCarInput> | TestDriveBookingCreateWithoutCarInput[] | TestDriveBookingUncheckedCreateWithoutCarInput[]
     connectOrCreate?: TestDriveBookingCreateOrConnectWithoutCarInput | TestDriveBookingCreateOrConnectWithoutCarInput[]
@@ -10335,7 +10321,7 @@ export namespace Prisma {
     deleteMany?: TestDriveBookingScalarWhereInput | TestDriveBookingScalarWhereInput[]
   }
 
-  export type UserSavedCarUncheckedUpdateManyWithoutCarNestedInput = {
+  export type UserSavedCarUpdateManyWithoutCarNestedInput = {
     create?: XOR<UserSavedCarCreateWithoutCarInput, UserSavedCarUncheckedCreateWithoutCarInput> | UserSavedCarCreateWithoutCarInput[] | UserSavedCarUncheckedCreateWithoutCarInput[]
     connectOrCreate?: UserSavedCarCreateOrConnectWithoutCarInput | UserSavedCarCreateOrConnectWithoutCarInput[]
     upsert?: UserSavedCarUpsertWithWhereUniqueWithoutCarInput | UserSavedCarUpsertWithWhereUniqueWithoutCarInput[]
@@ -10361,6 +10347,20 @@ export namespace Prisma {
     update?: TestDriveBookingUpdateWithWhereUniqueWithoutCarInput | TestDriveBookingUpdateWithWhereUniqueWithoutCarInput[]
     updateMany?: TestDriveBookingUpdateManyWithWhereWithoutCarInput | TestDriveBookingUpdateManyWithWhereWithoutCarInput[]
     deleteMany?: TestDriveBookingScalarWhereInput | TestDriveBookingScalarWhereInput[]
+  }
+
+  export type UserSavedCarUncheckedUpdateManyWithoutCarNestedInput = {
+    create?: XOR<UserSavedCarCreateWithoutCarInput, UserSavedCarUncheckedCreateWithoutCarInput> | UserSavedCarCreateWithoutCarInput[] | UserSavedCarUncheckedCreateWithoutCarInput[]
+    connectOrCreate?: UserSavedCarCreateOrConnectWithoutCarInput | UserSavedCarCreateOrConnectWithoutCarInput[]
+    upsert?: UserSavedCarUpsertWithWhereUniqueWithoutCarInput | UserSavedCarUpsertWithWhereUniqueWithoutCarInput[]
+    createMany?: UserSavedCarCreateManyCarInputEnvelope
+    set?: UserSavedCarWhereUniqueInput | UserSavedCarWhereUniqueInput[]
+    disconnect?: UserSavedCarWhereUniqueInput | UserSavedCarWhereUniqueInput[]
+    delete?: UserSavedCarWhereUniqueInput | UserSavedCarWhereUniqueInput[]
+    connect?: UserSavedCarWhereUniqueInput | UserSavedCarWhereUniqueInput[]
+    update?: UserSavedCarUpdateWithWhereUniqueWithoutCarInput | UserSavedCarUpdateWithWhereUniqueWithoutCarInput[]
+    updateMany?: UserSavedCarUpdateManyWithWhereWithoutCarInput | UserSavedCarUpdateManyWithWhereWithoutCarInput[]
+    deleteMany?: UserSavedCarScalarWhereInput | UserSavedCarScalarWhereInput[]
   }
 
   export type WorkingHourCreateNestedManyWithoutDealershipInput = {
@@ -10423,24 +10423,16 @@ export namespace Prisma {
     update?: XOR<XOR<DealershipInfoUpdateToOneWithWhereWithoutWorkingHoursInput, DealershipInfoUpdateWithoutWorkingHoursInput>, DealershipInfoUncheckedUpdateWithoutWorkingHoursInput>
   }
 
-  export type UserCreateNestedOneWithoutSavedCarsInput = {
-    create?: XOR<UserCreateWithoutSavedCarsInput, UserUncheckedCreateWithoutSavedCarsInput>
-    connectOrCreate?: UserCreateOrConnectWithoutSavedCarsInput
-    connect?: UserWhereUniqueInput
-  }
-
   export type CarCreateNestedOneWithoutSavedByInput = {
     create?: XOR<CarCreateWithoutSavedByInput, CarUncheckedCreateWithoutSavedByInput>
     connectOrCreate?: CarCreateOrConnectWithoutSavedByInput
     connect?: CarWhereUniqueInput
   }
 
-  export type UserUpdateOneRequiredWithoutSavedCarsNestedInput = {
+  export type UserCreateNestedOneWithoutSavedCarsInput = {
     create?: XOR<UserCreateWithoutSavedCarsInput, UserUncheckedCreateWithoutSavedCarsInput>
     connectOrCreate?: UserCreateOrConnectWithoutSavedCarsInput
-    upsert?: UserUpsertWithoutSavedCarsInput
     connect?: UserWhereUniqueInput
-    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutSavedCarsInput, UserUpdateWithoutSavedCarsInput>, UserUncheckedUpdateWithoutSavedCarsInput>
   }
 
   export type CarUpdateOneRequiredWithoutSavedByNestedInput = {
@@ -10449,6 +10441,14 @@ export namespace Prisma {
     upsert?: CarUpsertWithoutSavedByInput
     connect?: CarWhereUniqueInput
     update?: XOR<XOR<CarUpdateToOneWithWhereWithoutSavedByInput, CarUpdateWithoutSavedByInput>, CarUncheckedUpdateWithoutSavedByInput>
+  }
+
+  export type UserUpdateOneRequiredWithoutSavedCarsNestedInput = {
+    create?: XOR<UserCreateWithoutSavedCarsInput, UserUncheckedCreateWithoutSavedCarsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutSavedCarsInput
+    upsert?: UserUpsertWithoutSavedCarsInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutSavedCarsInput, UserUpdateWithoutSavedCarsInput>, UserUncheckedUpdateWithoutSavedCarsInput>
   }
 
   export type CarCreateNestedOneWithoutTestDriveBookingsInput = {
@@ -10754,28 +10754,6 @@ export namespace Prisma {
     _max?: NestedEnumBookingStatusFilter<$PrismaModel>
   }
 
-  export type UserSavedCarCreateWithoutUserInput = {
-    id?: string
-    savedAt?: Date | string
-    car: CarCreateNestedOneWithoutSavedByInput
-  }
-
-  export type UserSavedCarUncheckedCreateWithoutUserInput = {
-    id?: string
-    carId: string
-    savedAt?: Date | string
-  }
-
-  export type UserSavedCarCreateOrConnectWithoutUserInput = {
-    where: UserSavedCarWhereUniqueInput
-    create: XOR<UserSavedCarCreateWithoutUserInput, UserSavedCarUncheckedCreateWithoutUserInput>
-  }
-
-  export type UserSavedCarCreateManyUserInputEnvelope = {
-    data: UserSavedCarCreateManyUserInput | UserSavedCarCreateManyUserInput[]
-    skipDuplicates?: boolean
-  }
-
   export type TestDriveBookingCreateWithoutUserInput = {
     id?: string
     bookingDate: Date | string
@@ -10810,30 +10788,26 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-  export type UserSavedCarUpsertWithWhereUniqueWithoutUserInput = {
+  export type UserSavedCarCreateWithoutUserInput = {
+    id?: string
+    savedAt?: Date | string
+    car: CarCreateNestedOneWithoutSavedByInput
+  }
+
+  export type UserSavedCarUncheckedCreateWithoutUserInput = {
+    id?: string
+    carId: string
+    savedAt?: Date | string
+  }
+
+  export type UserSavedCarCreateOrConnectWithoutUserInput = {
     where: UserSavedCarWhereUniqueInput
-    update: XOR<UserSavedCarUpdateWithoutUserInput, UserSavedCarUncheckedUpdateWithoutUserInput>
     create: XOR<UserSavedCarCreateWithoutUserInput, UserSavedCarUncheckedCreateWithoutUserInput>
   }
 
-  export type UserSavedCarUpdateWithWhereUniqueWithoutUserInput = {
-    where: UserSavedCarWhereUniqueInput
-    data: XOR<UserSavedCarUpdateWithoutUserInput, UserSavedCarUncheckedUpdateWithoutUserInput>
-  }
-
-  export type UserSavedCarUpdateManyWithWhereWithoutUserInput = {
-    where: UserSavedCarScalarWhereInput
-    data: XOR<UserSavedCarUpdateManyMutationInput, UserSavedCarUncheckedUpdateManyWithoutUserInput>
-  }
-
-  export type UserSavedCarScalarWhereInput = {
-    AND?: UserSavedCarScalarWhereInput | UserSavedCarScalarWhereInput[]
-    OR?: UserSavedCarScalarWhereInput[]
-    NOT?: UserSavedCarScalarWhereInput | UserSavedCarScalarWhereInput[]
-    id?: StringFilter<"UserSavedCar"> | string
-    userId?: StringFilter<"UserSavedCar"> | string
-    carId?: StringFilter<"UserSavedCar"> | string
-    savedAt?: DateTimeFilter<"UserSavedCar"> | Date | string
+  export type UserSavedCarCreateManyUserInputEnvelope = {
+    data: UserSavedCarCreateManyUserInput | UserSavedCarCreateManyUserInput[]
+    skipDuplicates?: boolean
   }
 
   export type TestDriveBookingUpsertWithWhereUniqueWithoutUserInput = {
@@ -10868,26 +10842,30 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"TestDriveBooking"> | Date | string
   }
 
-  export type UserSavedCarCreateWithoutCarInput = {
-    id?: string
-    savedAt?: Date | string
-    user: UserCreateNestedOneWithoutSavedCarsInput
-  }
-
-  export type UserSavedCarUncheckedCreateWithoutCarInput = {
-    id?: string
-    userId: string
-    savedAt?: Date | string
-  }
-
-  export type UserSavedCarCreateOrConnectWithoutCarInput = {
+  export type UserSavedCarUpsertWithWhereUniqueWithoutUserInput = {
     where: UserSavedCarWhereUniqueInput
-    create: XOR<UserSavedCarCreateWithoutCarInput, UserSavedCarUncheckedCreateWithoutCarInput>
+    update: XOR<UserSavedCarUpdateWithoutUserInput, UserSavedCarUncheckedUpdateWithoutUserInput>
+    create: XOR<UserSavedCarCreateWithoutUserInput, UserSavedCarUncheckedCreateWithoutUserInput>
   }
 
-  export type UserSavedCarCreateManyCarInputEnvelope = {
-    data: UserSavedCarCreateManyCarInput | UserSavedCarCreateManyCarInput[]
-    skipDuplicates?: boolean
+  export type UserSavedCarUpdateWithWhereUniqueWithoutUserInput = {
+    where: UserSavedCarWhereUniqueInput
+    data: XOR<UserSavedCarUpdateWithoutUserInput, UserSavedCarUncheckedUpdateWithoutUserInput>
+  }
+
+  export type UserSavedCarUpdateManyWithWhereWithoutUserInput = {
+    where: UserSavedCarScalarWhereInput
+    data: XOR<UserSavedCarUpdateManyMutationInput, UserSavedCarUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type UserSavedCarScalarWhereInput = {
+    AND?: UserSavedCarScalarWhereInput | UserSavedCarScalarWhereInput[]
+    OR?: UserSavedCarScalarWhereInput[]
+    NOT?: UserSavedCarScalarWhereInput | UserSavedCarScalarWhereInput[]
+    id?: StringFilter<"UserSavedCar"> | string
+    userId?: StringFilter<"UserSavedCar"> | string
+    carId?: StringFilter<"UserSavedCar"> | string
+    savedAt?: DateTimeFilter<"UserSavedCar"> | Date | string
   }
 
   export type TestDriveBookingCreateWithoutCarInput = {
@@ -10924,20 +10902,26 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-  export type UserSavedCarUpsertWithWhereUniqueWithoutCarInput = {
+  export type UserSavedCarCreateWithoutCarInput = {
+    id?: string
+    savedAt?: Date | string
+    user: UserCreateNestedOneWithoutSavedCarsInput
+  }
+
+  export type UserSavedCarUncheckedCreateWithoutCarInput = {
+    id?: string
+    userId: string
+    savedAt?: Date | string
+  }
+
+  export type UserSavedCarCreateOrConnectWithoutCarInput = {
     where: UserSavedCarWhereUniqueInput
-    update: XOR<UserSavedCarUpdateWithoutCarInput, UserSavedCarUncheckedUpdateWithoutCarInput>
     create: XOR<UserSavedCarCreateWithoutCarInput, UserSavedCarUncheckedCreateWithoutCarInput>
   }
 
-  export type UserSavedCarUpdateWithWhereUniqueWithoutCarInput = {
-    where: UserSavedCarWhereUniqueInput
-    data: XOR<UserSavedCarUpdateWithoutCarInput, UserSavedCarUncheckedUpdateWithoutCarInput>
-  }
-
-  export type UserSavedCarUpdateManyWithWhereWithoutCarInput = {
-    where: UserSavedCarScalarWhereInput
-    data: XOR<UserSavedCarUpdateManyMutationInput, UserSavedCarUncheckedUpdateManyWithoutCarInput>
+  export type UserSavedCarCreateManyCarInputEnvelope = {
+    data: UserSavedCarCreateManyCarInput | UserSavedCarCreateManyCarInput[]
+    skipDuplicates?: boolean
   }
 
   export type TestDriveBookingUpsertWithWhereUniqueWithoutCarInput = {
@@ -10954,6 +10938,22 @@ export namespace Prisma {
   export type TestDriveBookingUpdateManyWithWhereWithoutCarInput = {
     where: TestDriveBookingScalarWhereInput
     data: XOR<TestDriveBookingUpdateManyMutationInput, TestDriveBookingUncheckedUpdateManyWithoutCarInput>
+  }
+
+  export type UserSavedCarUpsertWithWhereUniqueWithoutCarInput = {
+    where: UserSavedCarWhereUniqueInput
+    update: XOR<UserSavedCarUpdateWithoutCarInput, UserSavedCarUncheckedUpdateWithoutCarInput>
+    create: XOR<UserSavedCarCreateWithoutCarInput, UserSavedCarUncheckedCreateWithoutCarInput>
+  }
+
+  export type UserSavedCarUpdateWithWhereUniqueWithoutCarInput = {
+    where: UserSavedCarWhereUniqueInput
+    data: XOR<UserSavedCarUpdateWithoutCarInput, UserSavedCarUncheckedUpdateWithoutCarInput>
+  }
+
+  export type UserSavedCarUpdateManyWithWhereWithoutCarInput = {
+    where: UserSavedCarScalarWhereInput
+    data: XOR<UserSavedCarUpdateManyMutationInput, UserSavedCarUncheckedUpdateManyWithoutCarInput>
   }
 
   export type WorkingHourCreateWithoutDealershipInput = {
@@ -11072,37 +11072,6 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type UserCreateWithoutSavedCarsInput = {
-    id?: string
-    clerkUserId: string
-    email: string
-    name?: string | null
-    imageUrl?: string | null
-    phone?: string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    role?: $Enums.UserRole
-    testDrives?: TestDriveBookingCreateNestedManyWithoutUserInput
-  }
-
-  export type UserUncheckedCreateWithoutSavedCarsInput = {
-    id?: string
-    clerkUserId: string
-    email: string
-    name?: string | null
-    imageUrl?: string | null
-    phone?: string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    role?: $Enums.UserRole
-    testDrives?: TestDriveBookingUncheckedCreateNestedManyWithoutUserInput
-  }
-
-  export type UserCreateOrConnectWithoutSavedCarsInput = {
-    where: UserWhereUniqueInput
-    create: XOR<UserCreateWithoutSavedCarsInput, UserUncheckedCreateWithoutSavedCarsInput>
-  }
-
   export type CarCreateWithoutSavedByInput = {
     id?: string
     make: string
@@ -11150,41 +11119,35 @@ export namespace Prisma {
     create: XOR<CarCreateWithoutSavedByInput, CarUncheckedCreateWithoutSavedByInput>
   }
 
-  export type UserUpsertWithoutSavedCarsInput = {
-    update: XOR<UserUpdateWithoutSavedCarsInput, UserUncheckedUpdateWithoutSavedCarsInput>
+  export type UserCreateWithoutSavedCarsInput = {
+    id?: string
+    clerkUserId: string
+    email: string
+    name?: string | null
+    imageUrl?: string | null
+    phone?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    role?: $Enums.UserRole
+    testDrives?: TestDriveBookingCreateNestedManyWithoutUserInput
+  }
+
+  export type UserUncheckedCreateWithoutSavedCarsInput = {
+    id?: string
+    clerkUserId: string
+    email: string
+    name?: string | null
+    imageUrl?: string | null
+    phone?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    role?: $Enums.UserRole
+    testDrives?: TestDriveBookingUncheckedCreateNestedManyWithoutUserInput
+  }
+
+  export type UserCreateOrConnectWithoutSavedCarsInput = {
+    where: UserWhereUniqueInput
     create: XOR<UserCreateWithoutSavedCarsInput, UserUncheckedCreateWithoutSavedCarsInput>
-    where?: UserWhereInput
-  }
-
-  export type UserUpdateToOneWithWhereWithoutSavedCarsInput = {
-    where?: UserWhereInput
-    data: XOR<UserUpdateWithoutSavedCarsInput, UserUncheckedUpdateWithoutSavedCarsInput>
-  }
-
-  export type UserUpdateWithoutSavedCarsInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    clerkUserId?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    name?: NullableStringFieldUpdateOperationsInput | string | null
-    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    phone?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
-    testDrives?: TestDriveBookingUpdateManyWithoutUserNestedInput
-  }
-
-  export type UserUncheckedUpdateWithoutSavedCarsInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    clerkUserId?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    name?: NullableStringFieldUpdateOperationsInput | string | null
-    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    phone?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
-    testDrives?: TestDriveBookingUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type CarUpsertWithoutSavedByInput = {
@@ -11238,6 +11201,43 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     testDriveBookings?: TestDriveBookingUncheckedUpdateManyWithoutCarNestedInput
+  }
+
+  export type UserUpsertWithoutSavedCarsInput = {
+    update: XOR<UserUpdateWithoutSavedCarsInput, UserUncheckedUpdateWithoutSavedCarsInput>
+    create: XOR<UserCreateWithoutSavedCarsInput, UserUncheckedCreateWithoutSavedCarsInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutSavedCarsInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutSavedCarsInput, UserUncheckedUpdateWithoutSavedCarsInput>
+  }
+
+  export type UserUpdateWithoutSavedCarsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    clerkUserId?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    testDrives?: TestDriveBookingUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutSavedCarsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    clerkUserId?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    testDrives?: TestDriveBookingUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type CarCreateWithoutTestDriveBookingsInput = {
@@ -11408,12 +11408,6 @@ export namespace Prisma {
     savedCars?: UserSavedCarUncheckedUpdateManyWithoutUserNestedInput
   }
 
-  export type UserSavedCarCreateManyUserInput = {
-    id?: string
-    carId: string
-    savedAt?: Date | string
-  }
-
   export type TestDriveBookingCreateManyUserInput = {
     id?: string
     carId: string
@@ -11426,22 +11420,10 @@ export namespace Prisma {
     updatedAt?: Date | string
   }
 
-  export type UserSavedCarUpdateWithoutUserInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    savedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    car?: CarUpdateOneRequiredWithoutSavedByNestedInput
-  }
-
-  export type UserSavedCarUncheckedUpdateWithoutUserInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    carId?: StringFieldUpdateOperationsInput | string
-    savedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type UserSavedCarUncheckedUpdateManyWithoutUserInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    carId?: StringFieldUpdateOperationsInput | string
-    savedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  export type UserSavedCarCreateManyUserInput = {
+    id?: string
+    carId: string
+    savedAt?: Date | string
   }
 
   export type TestDriveBookingUpdateWithoutUserInput = {
@@ -11480,10 +11462,22 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type UserSavedCarCreateManyCarInput = {
-    id?: string
-    userId: string
-    savedAt?: Date | string
+  export type UserSavedCarUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    savedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    car?: CarUpdateOneRequiredWithoutSavedByNestedInput
+  }
+
+  export type UserSavedCarUncheckedUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    carId?: StringFieldUpdateOperationsInput | string
+    savedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type UserSavedCarUncheckedUpdateManyWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    carId?: StringFieldUpdateOperationsInput | string
+    savedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type TestDriveBookingCreateManyCarInput = {
@@ -11498,22 +11492,10 @@ export namespace Prisma {
     updatedAt?: Date | string
   }
 
-  export type UserSavedCarUpdateWithoutCarInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    savedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    user?: UserUpdateOneRequiredWithoutSavedCarsNestedInput
-  }
-
-  export type UserSavedCarUncheckedUpdateWithoutCarInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    userId?: StringFieldUpdateOperationsInput | string
-    savedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type UserSavedCarUncheckedUpdateManyWithoutCarInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    userId?: StringFieldUpdateOperationsInput | string
-    savedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  export type UserSavedCarCreateManyCarInput = {
+    id?: string
+    userId: string
+    savedAt?: Date | string
   }
 
   export type TestDriveBookingUpdateWithoutCarInput = {
@@ -11550,6 +11532,24 @@ export namespace Prisma {
     notes?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type UserSavedCarUpdateWithoutCarInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    savedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutSavedCarsNestedInput
+  }
+
+  export type UserSavedCarUncheckedUpdateWithoutCarInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    savedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type UserSavedCarUncheckedUpdateManyWithoutCarInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    savedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type WorkingHourCreateManyDealershipInput = {

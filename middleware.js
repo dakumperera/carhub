@@ -31,12 +31,12 @@ const clerk = clerkMiddleware(async (auth, req) => {
   if (isProtectedRoute(req)) {
     // Call auth() only once and destructure both values
     const { userId, redirectToSignIn } = await auth();
-    
+   
     if (!userId) {
       return redirectToSignIn();
     }
   }
-  
+ 
   return NextResponse.next();
 });
 
