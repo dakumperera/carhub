@@ -260,7 +260,7 @@ export async function toggleSavedCar(carId) {
 }
 
 /**
- * Get car details by ID
+ * Get car details by ID - FIXED VERSION
  */
 export async function getCarById(carId) {
   try {
@@ -286,7 +286,7 @@ export async function getCarById(carId) {
       };
     }
 
-    // Check if car is wishlisted by user
+    // Check if car is wishlisted by user (only if user is logged in)
     let isWishlisted = false;
     if (dbUser) {
       const savedCar = await db.userSavedCar.findUnique({
@@ -301,17 +301,21 @@ export async function getCarById(carId) {
       isWishlisted = !!savedCar;
     }
 
-    // Check if user has already booked a test drive for this car
-    const existingTestDrive = await db.testDriveBooking.findFirst({
-      where: {
-        carId,
-        userId: dbUser.id,
-        status: { in: ["PENDING", "CONFIRMED", "COMPLETED"] },
-      },
-      orderBy: {
-        createdAt: "desc",
-      },
-    });
+    // Check if user has already booked a test drive for this car (only if user is logged in)
+    let existingTestDrive = null;
+    if (dbUser) {
+      // FIXED: Only check for test drives if user is logged in
+      existingTestDrive = await db.testDriveBooking.findFirst({
+        where: {
+          carId,
+          userId: dbUser.id, // This was the problem - now only runs if dbUser exists
+          status: { in: ["PENDING", "CONFIRMED", "COMPLETED"] },
+        },
+        orderBy: {
+          createdAt: "desc",
+        },
+      });
+    }
 
     let userTestDrive = null;
 
@@ -352,7 +356,11 @@ export async function getCarById(carId) {
       },
     };
   } catch (error) {
-    throw new Error("Error fetching car details:" + error.message);
+    console.error("Error in getCarById:", error); // Better error logging
+    return {
+      success: false,
+      error: "Car not found",
+    };
   }
 }
 
