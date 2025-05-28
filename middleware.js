@@ -8,34 +8,35 @@ const isProtectedRoute = createRouteMatcher([
   "/reservations(.*)",
 ]);
 
-// Create Arcjet middleware
+// Create Arcjet middleware with DRY_RUN mode to prevent blocking deployment
 const aj = arcjet({
   key: process.env.ARCJET_KEY,
-  // characteristics: ["userId"], // Track based on Clerk userId
   rules: [
-    // Shield protection for content and security
     shield({
       mode: "LIVE",
     }),
     detectBot({
-      mode: "LIVE", // will block requests. Use "DRY_RUN" to log only
+      mode: "DRY_RUN", // Changed to DRY_RUN to prevent blocking during deployment
       allow: [
         "CATEGORY:SEARCH_ENGINE", // Google, Bing, etc
-        // See the full list at https://arcjet.com/bot-list
+        "CATEGORY:PREVIEW", // Social media link previews
+        "CATEGORY:MONITORING", // Uptime monitoring
       ],
     }),
   ],
 });
 
-// Create base Clerk middleware
+// Create base Clerk middleware - FIXED: Don't call auth() twice
 const clerk = clerkMiddleware(async (auth, req) => {
-  const { userId } = await auth();
-
-  if (!userId && isProtectedRoute(req)) {
-    const { redirectToSignIn } = await auth();
-    return redirectToSignIn();
+  if (isProtectedRoute(req)) {
+    // Call auth() only once and destructure both values
+    const { userId, redirectToSignIn } = await auth();
+    
+    if (!userId) {
+      return redirectToSignIn();
+    }
   }
-
+  
   return NextResponse.next();
 });
 
