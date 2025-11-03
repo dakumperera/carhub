@@ -26,7 +26,7 @@ export async function processCarImageWithAI(file) {
 
     // Initialize Gemini API
     const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
-    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+    const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash-exp" });
 
     // Convert image file to base64
     const base64Image = await fileToBase64(file);
@@ -121,7 +121,7 @@ export async function processCarImageWithAI(file) {
       };
     }
   } catch (error) {
-    console.error();
+    console.error("Gemini API error:", error);
     throw new Error("Gemini API error:" + error.message);
   }
 }
@@ -286,7 +286,7 @@ export async function deleteCar(id) {
 
     // Delete the images from Supabase storage
     try {
-      const cookieStore = cookies();
+      const cookieStore = await cookies();
       const supabase = createClient(cookieStore);
 
       // Extract file paths from image URLs

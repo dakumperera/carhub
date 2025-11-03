@@ -348,14 +348,21 @@ const AddCarForm = () => {
                   </div>
 
                   <div className="space-y-2">
-                    <Label htmlFor="price"> Price</Label>
-                    <Input
-                      type="text"
-                      id="price"
-                      {...register("price")}
-                      placeholder="e.g. 2000000"
-                      className={errors.price ? "border-red-500" : ""}
-                    />
+                    <Label htmlFor="price"> Price (LKR)</Label>
+                    <div className="relative">
+                      <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500">
+                        Rs
+                      </span>
+                      <Input
+                        type="text"
+                        inputMode="numeric"
+                        id="price"
+                        {...register("price")}
+                        placeholder="2000000"
+                        className={`pl-10 ${errors.price ? "border-red-500" : ""}`}
+                        autoComplete="off"
+                      />
+                    </div>
                     {errors.price && (
                       <p className="text-red-500">{errors.price.message}</p>
                     )}
